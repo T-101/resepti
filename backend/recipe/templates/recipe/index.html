@@ -1,0 +1,24 @@
+{% extends 'recipe/base.html' %}
+
+{% block content %}
+    <h3>Resepti</h3>
+
+    <p>
+        Tästä hieman maistuvia reseptejä herkkusuille.
+    </p>
+
+    <div class="row">
+        <div class="col-3">
+            <ul class="list-group">
+                <li class="list-group-item active disabled" aria-current="true">Reseptityyppi</li>
+                {% for item in object_list %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <a href="{% url 'recipe:types' item.slug %}">{{ item }}</a>
+                        <span class="badge bg-primary rounded-pill">{{ item.recipe_count }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}

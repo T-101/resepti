@@ -1,0 +1,45 @@
+{% extends 'recipe/base.html' %}
+
+{% block title %}
+    <title>{{ object }}</title>
+
+{% endblock %}
+
+{% block content %}
+    <h3>{{ object }}</h3>
+    <div class="row">
+        <div class="col-sm-6">
+            {% if object.recipe_picture %}
+                <img src="{{ object.recipe_picture.url }}" class="img-fluid mb-2" alt="{{ object.recipe_name }}">
+            {% endif %}
+            {{ object.recipe_instructions | linebreaks }}
+        </div>
+        <div class="col-sm-6">
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Määrä</th>
+                    <th scope="col">Aines</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for item in object.recipe_tables.all %}
+
+                    <tr>
+                        <th scope="row">{{ item.recipe_ingredient_amount.normalize | default_if_none:"" }}
+                            {{ item.recipe_ingredient_unit.recipe_unit | default_if_none:"" }}</th>
+                        <td>{{ item.recipe_ingredient }}</td>
+                    </tr>
+
+
+                {% endfor %}
+
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+{% endblock %}

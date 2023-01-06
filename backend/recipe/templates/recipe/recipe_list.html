@@ -1,0 +1,14 @@
+{% extends 'recipe/base.html' %}
+
+{% block title %}
+    <title>Reseptityypit | Resepti</title>
+{% endblock %}
+
+{% block content %}
+    <h3>Hakutulokset</h3>
+    <ul>
+        {% for item in object_list %}
+            <li><a href="{% url 'recipe:detail' item.slug %}">{{ item }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
