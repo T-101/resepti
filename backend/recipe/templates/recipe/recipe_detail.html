@@ -6,9 +6,19 @@
 {% endblock %}
 
 {% block content %}
-    <h3>{{ object }}</h3>
+
+    <div class="row">
+        <div class="col">
+            <h3>{{ object }}</h3>
+        </div>
+        <div class="col">
+            <a class="btn btn-primary" href="{% url 'recipe:types' object.recipe_class.slug %}">{{ object.recipe_class }}</a>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-sm-6">
+
             {% if object.recipe_picture %}
                 <img src="{{ object.recipe_picture.url }}" class="img-fluid mb-2" alt="{{ object.recipe_name }}">
             {% endif %}
