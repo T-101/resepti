@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.db.models.functions import Lower
 from django.views.generic import TemplateView, DetailView, ListView
 
@@ -29,5 +30,7 @@ class SearchView(ListView):
     model = Recipe
 
     def get_queryset(self):
-        return self.model.objects.filter(recipe_name__icontains=self.request.GET.get("q")).order_by(
-            Lower("recipe_name"))
+        query = self.request.GET.get("q")
+        return self.model.objects \
+            .filter(Q(recipe_name__icontains=query) | Q(recipe_tables__recipe_ingredient__ingredient__icontains=query)) \
+            .order_by(Lower("recipe_name")).distinct()
