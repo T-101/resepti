@@ -12,7 +12,7 @@ class LandingPageView(ListView):
 
 class RecipeView(DetailView):
     model = Recipe
-    queryset = Recipe.objects.select_related("recipe_class").all()
+    queryset = Recipe.objects.prefetch_related("recipe_tables__recipe_ingredient", "recipe_tables__recipe_ingredient_unit").all()
 
 
 class RecipeTypeView(ListView):
