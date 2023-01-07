@@ -10,7 +10,7 @@ def upload_picture(instance, orig_filename):
     return f"{slugify(instance.recipe_name)}{ext}"
 
 
-class RecipeIngredient(models.Model):
+class Ingredient(models.Model):
     class Meta:
         ordering = ["name"]
 
@@ -20,7 +20,7 @@ class RecipeIngredient(models.Model):
         return self.name.capitalize()
 
 
-class RecipeUnit(models.Model):
+class IngredientUnit(models.Model):
     unit = models.CharField(max_length=10, null=True, blank=True)
     name = models.CharField(max_length=15, blank=True, null=True)
 
@@ -53,9 +53,9 @@ class Recipe(models.Model):
 
 class RecipeTable(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="recipe_tables")
-    ingredient = models.ForeignKey(RecipeIngredient, on_delete=models.CASCADE, related_name="recipe_tables")
+    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE, related_name="recipe_tables")
     ingredient_amount = models.DecimalField(decimal_places=1, max_digits=6, blank=True, null=True)
-    ingredient_unit = models.ForeignKey(RecipeUnit, blank=True, null=True, on_delete=models.CASCADE,
+    ingredient_unit = models.ForeignKey(IngredientUnit, blank=True, null=True, on_delete=models.CASCADE,
                                         related_name="recipe_tables")
 
     def __str__(self):
