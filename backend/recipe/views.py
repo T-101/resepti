@@ -1,4 +1,4 @@
-from django.db.models import Q
+from django.db.models import Q, Count
 from django.db.models.functions import Lower
 from django.views.generic import TemplateView, DetailView, ListView
 
@@ -8,7 +8,7 @@ from recipe.models import Recipe, RecipeClass
 class LandingPageView(ListView):
     template_name = "recipe/index.html"
     model = RecipeClass
-    queryset = RecipeClass.objects.order_by(Lower("class_name"))
+    queryset = RecipeClass.objects.annotate(Count("recipies")).order_by(Lower("class_name"))
 
 
 class RecipeView(DetailView):
