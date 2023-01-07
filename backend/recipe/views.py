@@ -14,6 +14,7 @@ class LandingPageView(ListView):
 class RecipeView(DetailView):
     model = Recipe
     queryset = Recipe.objects \
+        .filter(is_visible=True) \
         .prefetch_related("recipe_tables__ingredient", "recipe_tables__ingredient_unit") \
         .select_related("recipe_class") \
         .all()
@@ -23,7 +24,9 @@ class RecipeTypeView(ListView):
     model = Recipe
 
     def get_queryset(self):
-        return self.model.objects.filter(recipe_class__slug=self.kwargs.get("slug")).order_by(Lower("recipe_name"))
+        return self.model.objects\
+            .filter(is_visible=True) \
+            .filter(recipe_class__slug=self.kwargs.get("slug")).order_by(Lower("name"))
 
 
 class SearchView(ListView):
@@ -32,5 +35,6 @@ class SearchView(ListView):
     def get_queryset(self):
         query = self.request.GET.get("q")
         return self.model.objects \
-            .filter(Q(recipe_name__icontains=query) | Q(recipe_tables__ingredient__name__icontains=query)) \
-            .order_by(Lower("recipe_name")).distinct()
+            .filter(is_visible=True) \
+            .filter(Q(name__icontains=query) | Q(recipe_tables__ingredient__name__icontains=query)) \
+            .order_by(Lower("name")).distinct()

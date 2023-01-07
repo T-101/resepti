@@ -40,18 +40,15 @@ class RecipeClass(models.Model):
 
 
 class Recipe(models.Model):
-    recipe_name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50)
     slug = AutoSlugField(populate_from="recipe_name")
     recipe_class = models.ForeignKey(RecipeClass, on_delete=models.CASCADE, related_name="recipies")
-    recipe_instructions = models.TextField(blank=True, null=True)
-    recipe_picture = models.ImageField(upload_to=upload_picture, blank=True)
-    recipe_visibility = models.BooleanField(default=True)
-
-    def instructions_as_list(self):
-        return self.recipe_instructions.split('\r\n\r\n')
+    instructions = models.TextField(blank=True, null=True)
+    picture = models.ImageField(upload_to=upload_picture, blank=True)
+    is_visible = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.recipe_name
+        return self.name
 
 
 class RecipeTable(models.Model):
@@ -62,4 +59,4 @@ class RecipeTable(models.Model):
                                         related_name="recipe_tables")
 
     def __str__(self):
-        return self.recipe.recipe_name
+        return self.recipe.name
