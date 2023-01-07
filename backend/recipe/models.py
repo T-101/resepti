@@ -29,12 +29,14 @@ class RecipeUnit(models.Model):
 
 
 class RecipeClass(models.Model):
-    class_name = models.CharField(max_length=10)
+    class Meta:
+        verbose_name_plural = "Recipe classes"
+    name = models.CharField(max_length=10)
     slug = AutoSlugField(populate_from="class_name")
-    class_visibility = models.BooleanField(default=True)
+    is_visible = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.class_name
+        return self.name
 
 
 class Recipe(models.Model):
