@@ -22,10 +22,10 @@
     <div class="row">
         <div class="col-sm-6">
 
-            {% if object.recipe_picture %}
-                <img src="{{ object.recipe_picture.url }}" class="img-fluid mb-2" alt="{{ object.recipe_name }}">
+            {% if object.picture %}
+                <img src="{{ object.picture.url }}" class="img-fluid mb-2" alt="{{ object.name }}">
             {% endif %}
-            {{ object.recipe_instructions | linebreaks }}
+            {{ object.instructions | linebreaks }}
         </div>
         <div class="col-sm-6">
 

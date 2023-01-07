@@ -32,13 +32,13 @@ class RecipeClassAdmin(admin.ModelAdmin):
 class RecipeAdmin(admin.ModelAdmin):
     list_display = (
         'id',
-        'recipe_name',
+        'name',
         'recipe_class',
-        'recipe_picture',
-        'recipe_visibility',
+        'picture',
+        'is_visible',
     )
-    list_filter = ('recipe_class', 'recipe_visibility')
-    search_fields = ["recipe_name"]
+    list_filter = ('recipe_class', 'is_visible')
+    search_fields = ["name"]
     autocomplete_fields = ['recipe_class']
     inlines = [IngredientInline]
 
