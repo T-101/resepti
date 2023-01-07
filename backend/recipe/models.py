@@ -21,11 +21,11 @@ class RecipeIngredient(models.Model):
 
 
 class RecipeUnit(models.Model):
-    recipe_unit = models.CharField(max_length=10, null=True, blank=True)
-    recipe_unit_name = models.CharField(max_length=15, blank=True, null=True)
+    unit = models.CharField(max_length=10, null=True, blank=True)
+    name = models.CharField(max_length=15, blank=True, null=True)
 
     def __str__(self):
-        return self.recipe_unit + ' (' + self.recipe_unit_name + ')'
+        return self.unit + ' (' + self.name + ')'
 
 
 class RecipeClass(models.Model):

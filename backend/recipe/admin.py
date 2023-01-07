@@ -16,8 +16,8 @@ class RecipeIngredientAdmin(admin.ModelAdmin):
 
 @admin.register(RecipeUnit)
 class RecipeUnitAdmin(admin.ModelAdmin):
-    list_display = ('id', 'recipe_unit', 'recipe_unit_name')
-    search_fields = ['recipe_unit', 'recipe_unit_name']
+    list_display = ('id', 'unit', 'name')
+    search_fields = ['unit', 'name']
 
 
 @admin.register(RecipeClass)
