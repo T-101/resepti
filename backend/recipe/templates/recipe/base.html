@@ -20,20 +20,26 @@
 
 <nav class="navbar navbar-dark navbar-expand-sm bg-primary mb-3">
     <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'recipe:landing-page' %}">
+            <img src="{% static 'favicon-32x32.png' %}" alt="Logo" width="30" height="24"
+                 class="d-inline-block align-text-top">
+            Resepti
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler"
                 aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarToggler">
-            <a class="navbar-brand" href="{% url 'recipe:landing-page' %}">
-                <img src="{% static 'favicon-32x32.png' %}" alt="Logo" width="30" height="24"
-                     class="d-inline-block align-text-top">
-                Resepti
-            </a>
+
 
             <ul class="navbar-nav me-auto mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'recipe:landing-page' %}">Etusivu</a>
+                    <a class="nav-link {% if request.resolver_match.view_name == "recipe:landing-page" %} active {% endif %}"
+                       aria-current="page" href="{% url 'recipe:landing-page' %}">Etusivu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.view_name == "recipe:info" %} active {% endif %}"
+                       aria-current="page" href="{% url 'recipe:info' %}">Tietoa</a>
                 </li>
             </ul>
 
