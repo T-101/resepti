@@ -12,12 +12,12 @@ def upload_picture(instance, orig_filename):
 
 class RecipeIngredient(models.Model):
     class Meta:
-        ordering = ["ingredient"]
+        ordering = ["name"]
 
-    ingredient = models.CharField(max_length=40)
+    name = models.CharField(max_length=40)
 
     def __str__(self):
-        return self.ingredient.capitalize()
+        return self.name.capitalize()
 
 
 class RecipeUnit(models.Model):
