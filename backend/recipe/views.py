@@ -32,5 +32,5 @@ class SearchView(ListView):
     def get_queryset(self):
         query = self.request.GET.get("q")
         return self.model.objects \
-            .filter(Q(recipe_name__icontains=query) | Q(recipe_tables__recipe_ingredient__ingredient__icontains=query)) \
+            .filter(Q(recipe_name__icontains=query) | Q(recipe_tables__recipe_ingredient__name__icontains=query)) \
             .order_by(Lower("recipe_name")).distinct()
