@@ -14,7 +14,7 @@ class LandingPageView(ListView):
 class RecipeView(DetailView):
     model = Recipe
     queryset = Recipe.objects \
-        .prefetch_related("recipe_tables__recipe_ingredient", "recipe_tables__recipe_ingredient_unit") \
+        .prefetch_related("recipe_tables__ingredient", "recipe_tables__ingredient_unit") \
         .select_related("recipe_class") \
         .all()
 
@@ -32,5 +32,5 @@ class SearchView(ListView):
     def get_queryset(self):
         query = self.request.GET.get("q")
         return self.model.objects \
-            .filter(Q(recipe_name__icontains=query) | Q(recipe_tables__recipe_ingredient__name__icontains=query)) \
+            .filter(Q(recipe_name__icontains=query) | Q(recipe_tables__ingredient__name__icontains=query)) \
             .order_by(Lower("recipe_name")).distinct()

@@ -48,9 +48,8 @@ class RecipeTableAdmin(admin.ModelAdmin):
     list_display = (
         'id',
         'recipe',
-        'recipe_ingredient',
-        'recipe_ingredient_amount',
-        'recipe_ingredient_unit',
+        'ingredient',
+        'ingredient_amount',
+        'ingredient_unit',
     )
-    # raw_id_fields = ('recipe', 'recipe_ingredient', 'recipe_ingredient_unit')
-    autocomplete_fields = ["recipe", "recipe_ingredient", "recipe_ingredient_unit"]
+    autocomplete_fields = ["recipe", "ingredient", "ingredient_unit"]
