@@ -1,21 +1,21 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
 
-from .models import RecipeIngredient, RecipeUnit, RecipeClass, Recipe, RecipeTable
+from .models import Ingredient, IngredientUnit, RecipeClass, Recipe, RecipeTable
 
 
 class IngredientInline(admin.TabularInline):
     model = RecipeTable
 
 
-@admin.register(RecipeIngredient)
-class RecipeIngredientAdmin(admin.ModelAdmin):
+@admin.register(Ingredient)
+class IngredientAdmin(admin.ModelAdmin):
     list_display = ('id', 'name')
     search_fields = ["name"]
 
 
-@admin.register(RecipeUnit)
-class RecipeUnitAdmin(admin.ModelAdmin):
+@admin.register(IngredientUnit)
+class IngredientUnitAdmin(admin.ModelAdmin):
     list_display = ('id', 'unit', 'name')
     search_fields = ['unit', 'name']
 
