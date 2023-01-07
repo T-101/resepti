@@ -1,10 +1,15 @@
-<!DOCTYPE html>
+<!DOCTYPE html>{% load static %}
 <html lang="fi">
 <head>
     <meta charset="UTF-8">
     {% block title %}
         <title>Resepti</title>
     {% endblock %}
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'site.webmanifest' %}">
+    <!-- Favicon from Freepik - https://www.flaticon.com/free-icons/spoon -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.2.3/litera/bootstrap.min.css"
           integrity="sha512-bKFHl04NnBGpTyxFreApJzGG6ikCFJUZU0nBpEwPS9fbe0g+OTL2lJVc3fRNh5Q7bQtP8tYjefsJTwywPtgpyg=="
@@ -15,23 +20,21 @@
 
 <nav class="navbar navbar-dark navbar-expand-sm bg-primary mb-3">
     <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
-                aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler"
+                aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a class="navbar-brand" href="{% url 'recipe:landing-page' %}">Resepti</a>
+        <div class="collapse navbar-collapse" id="navbarToggler">
+            <a class="navbar-brand" href="{% url 'recipe:landing-page' %}">
+                <img src="{% static 'favicon-32x32.png' %}" alt="Logo" width="30" height="24"
+                     class="d-inline-block align-text-top">
+                Resepti
+            </a>
 
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
+            <ul class="navbar-nav me-auto mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{% url 'recipe:landing-page' %}">Etusivu</a>
                 </li>
-                <!--
-<li class="nav-item">
-	<a class="nav-link" href="#">Link</a>
-</li>
--->
             </ul>
 
             <form class="d-flex" role="search" method="get" action="{% url 'recipe:search' %}">
