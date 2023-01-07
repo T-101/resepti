@@ -8,7 +8,7 @@ from recipe.models import Recipe, RecipeClass
 class LandingPageView(ListView):
     template_name = "recipe/index.html"
     model = RecipeClass
-    queryset = RecipeClass.objects.annotate(Count("recipies")).order_by(Lower("class_name"))
+    queryset = RecipeClass.objects.annotate(Count("recipies")).order_by(Lower("name"))
 
 
 class RecipeView(DetailView):

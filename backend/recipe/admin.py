@@ -22,9 +22,9 @@ class RecipeUnitAdmin(admin.ModelAdmin):
 
 @admin.register(RecipeClass)
 class RecipeClassAdmin(admin.ModelAdmin):
-    list_display = ('id', 'class_name', 'slug', 'class_visibility')
-    list_filter = ('class_visibility',)
-    search_fields = ['class_name']
+    list_display = ('id', 'name', 'slug', 'is_visible')
+    list_filter = ('is_visible',)
+    search_fields = ['name']
     readonly_fields = ['slug']
 
 
