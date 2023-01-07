@@ -41,9 +41,9 @@
                 {% for item in object.recipe_tables.all %}
 
                     <tr>
-                        <th scope="row">{{ item.recipe_ingredient_amount.normalize | default_if_none:"" }}
-                            {{ item.recipe_ingredient_unit.unit | default_if_none:"" }}</th>
-                        <td>{{ item.recipe_ingredient }}</td>
+                        <th scope="row">{{ item.ingredient_amount.normalize | default_if_none:"" }}
+                            {{ item.ingredient_unit.unit | default_if_none:"" }}</th>
+                        <td>{{ item.ingredient }}</td>
                     </tr>
 
 

@@ -54,10 +54,10 @@ class Recipe(models.Model):
 
 class RecipeTable(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="recipe_tables")
-    recipe_ingredient = models.ForeignKey(RecipeIngredient, on_delete=models.CASCADE, related_name="recipe_tables")
-    recipe_ingredient_amount = models.DecimalField(decimal_places=1, max_digits=6, blank=True, null=True)
-    recipe_ingredient_unit = models.ForeignKey(RecipeUnit, blank=True, null=True, on_delete=models.CASCADE,
-                                               related_name="recipe_tables")
+    ingredient = models.ForeignKey(RecipeIngredient, on_delete=models.CASCADE, related_name="recipe_tables")
+    ingredient_amount = models.DecimalField(decimal_places=1, max_digits=6, blank=True, null=True)
+    ingredient_unit = models.ForeignKey(RecipeUnit, blank=True, null=True, on_delete=models.CASCADE,
+                                        related_name="recipe_tables")
 
     def __str__(self):
         return self.recipe.recipe_name
