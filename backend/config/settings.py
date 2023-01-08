@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     # packages
     'django_extensions',
     'debug_toolbar',
+    'django_simple_plausible',
     # apps
     'recipe',
 ]
@@ -147,3 +148,6 @@ MEDIA_ROOT = env('MEDIA_ROOT')
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+PLAUSIBLE_SITES = env.str("PLAUSIBLE_SITES", default=None)
+PLAUSIBLE_SCRIPT_URL = env.str("PLAUSIBLE_SCRIPT_URL", default=None)

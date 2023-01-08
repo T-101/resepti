@@ -1,4 +1,4 @@
-<!DOCTYPE html>{% load static %}
+<!DOCTYPE html>{% load static %}{% load plausible %}
 <html lang="fi">
 <head>
     <meta charset="UTF-8">
@@ -55,9 +55,13 @@
     {% endblock %}
 </div>
 <h1>&nbsp;</h1>
-</body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js"
         integrity="sha512-i9cEfJwUwViEPFKdC1enz4ZRGBj8YQo6QByFTF92YXHi7waCqyexvRD75S5NVTsSiTv7rKWqG9Y5eFxmRsOn0A=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+{% plausible %}
+
+</body>
+
 </html>
