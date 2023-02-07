@@ -41,7 +41,7 @@ class RecipeClass(models.Model):
 
 class Recipe(models.Model):
     name = models.CharField(max_length=50)
-    slug = AutoSlugField(populate_from="recipe_name")
+    slug = AutoSlugField(populate_from="name")
     recipe_class = models.ForeignKey(RecipeClass, on_delete=models.CASCADE, related_name="recipies")
     instructions = models.TextField(blank=True, null=True)
     picture = models.ImageField(upload_to=upload_picture, blank=True)
