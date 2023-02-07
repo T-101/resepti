@@ -32,7 +32,7 @@ class RecipeClass(models.Model):
     class Meta:
         verbose_name_plural = "Recipe classes"
     name = models.CharField(max_length=10)
-    slug = AutoSlugField(populate_from="class_name")
+    slug = AutoSlugField(populate_from="name")
     is_visible = models.BooleanField(default=True)
 
     def __str__(self):
