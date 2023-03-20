@@ -4,12 +4,11 @@ services:
   app:
     env_file:
       - .env
-    container_name: resepti
     build: ./backend
     # command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:${CONTAINER_PORT}"
-    # command: bash -c "cd backend && gunicorn config.wsgi -w ${UWSGI_WORKERS} -b 0.0.0.0:${CONTAINER_PORT}"
+    # command: bash -c "gunicorn config.wsgi -w ${UWSGI_WORKERS} -b 0.0.0.0:${CONTAINER_PORT}"
     volumes:
       - ./backend:/app
     ports:
-      - "${CONTAINER_PORT}:${CONTAINER_PORT}"
-    restart: unless-stopped
+      - "127.0.0.1:${CONTAINER_PORT}:${CONTAINER_PORT}"
+    restart: always
