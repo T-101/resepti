@@ -1,21 +1,21 @@
-FROM python:3.11.1-alpine3.17
+FROM python:3.11-alpine3.17
 
 ENV PYTHONUNBUFFERED 1
 
 RUN mkdir /app
-
 WORKDIR /app
 
 RUN apk update \
     && apk add gcc python3-dev musl-dev \
     && apk add nano bash htop \
     && apk add zlib-dev jpeg-dev
-ENV TZ=Europe/Helsinki
 
-COPY requirements.txt /app/
+# to change this default, build using --build-arg timezone=Something/Else
+ARG timezone=Europe/Helsinki
+ENV TZ=${timezone}
+
 RUN pip install --upgrade pip
+COPY requirements.txt /app/
 RUN pip install -r requirements.txt
 
 COPY .bashrc /root/
-
-ADD . /app
