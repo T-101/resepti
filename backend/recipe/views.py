@@ -1,5 +1,8 @@
 import sys
+import os
+import re
 
+from django.conf import settings
 from django.db.models import Q, Count
 from django.db.models.functions import Lower
 from django import VERSION as DJANGO_VERSION
@@ -17,10 +20,19 @@ class LandingPageView(ListView):
 class InfoView(TemplateView):
     template_name = 'recipe/info.html'
 
+    @staticmethod
+    def _get_bootswatch_version() -> str:
+        base_template_file = os.path.join(settings.BASE_DIR, "recipe", "templates", "recipe", "base.html")
+        with open(base_template_file) as f:
+            template = f.readlines()
+        line = ''.join([x for x in template if "bootswatch" in x]).strip()
+        return re.search(r"(\d+\.\d+\.\d+|$)", line).group()
+
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data()
         ctx["django_version"] = '.'.join(map(str, list(DJANGO_VERSION[0:3])))
         ctx["python_version"] = sys.version.split(" ")[0]
+        ctx["bootswatch_version"] = self._get_bootswatch_version()
         return ctx
 
 
