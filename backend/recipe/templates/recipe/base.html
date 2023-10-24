@@ -1,5 +1,5 @@
 <!DOCTYPE html>{% load static %}{% load plausible %}
-<html lang="fi">
+<html lang="fi" data-bs-theme="light">
 <head>
     <meta charset="UTF-8">
     {% block title %}
@@ -14,9 +14,13 @@
     <link rel="manifest" href="{% static 'site.webmanifest' %}">
     <!-- Favicon from Freepik - https://www.flaticon.com/free-icons/spoon -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.2.3/litera/bootstrap.min.css"
-          integrity="sha512-bKFHl04NnBGpTyxFreApJzGG6ikCFJUZU0nBpEwPS9fbe0g+OTL2lJVc3fRNh5Q7bQtP8tYjefsJTwywPtgpyg=="
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.2/litera/bootstrap.min.css"
+          integrity="sha512-FAKbqNc1K2O4cnjyyiTs7loU3hwtcTF5y59TnJMcPJK/fbzY8kJaMGak8/Nsg5VL9CLiUf7M06ct+mleM2UnwA=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+          integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+          crossorigin="anonymous"/>
+    <script src="{% static 'bs-color-mode-toggler.js' %}"></script>
 
 </head>
 <body>
@@ -50,6 +54,23 @@
                 <input class="form-control me-2" type="search" placeholder="Hae" aria-label="Search" name="q">
                 <button class="btn btn-outline-light" type="submit">Hae</button>
             </form>
+            <ul class="navbar-nav mb-2 mb-lg-0 ms-2">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                       aria-haspopup="true" aria-expanded="false"><i class="fas fa-sun"></i></a>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <button class="dropdown-item" data-bs-theme-value="light"><i class="fas fa-sun"></i>
+                            Vaalea teema
+                        </button>
+                        <button class="dropdown-item" data-bs-theme-value="dark"><i class="fas fa-moon"></i>
+                            Hämärä teema
+                        </button>
+                        <button class="dropdown-item" data-bs-theme-value="auto"><i
+                                class="fas fa-magic"></i> Automaattinen
+                        </button>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>
