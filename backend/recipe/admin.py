@@ -6,6 +6,7 @@ from .models import Ingredient, IngredientUnit, RecipeClass, Recipe, RecipeTable
 
 class IngredientInline(admin.TabularInline):
     model = RecipeTable
+    autocomplete_fields = ["ingredient", "ingredient_unit"]
 
 
 @admin.register(Ingredient)
