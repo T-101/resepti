@@ -1,1 +1,2 @@
-alias ll="ls -lap"
+export EDITOR=nano
+alias ll="ls -lap --color=auto"
