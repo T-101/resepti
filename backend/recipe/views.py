@@ -8,7 +8,7 @@ from django.db.models.functions import Lower
 from django import VERSION as DJANGO_VERSION
 from django.views.generic import TemplateView, DetailView, ListView
 
-from recipe.models import Recipe, RecipeClass
+from recipe.models import Recipe, RecipeClass, RecipeTable
 
 
 class LandingPageView(ListView):
@@ -34,6 +34,9 @@ class InfoView(TemplateView):
         ctx["python_version"] = sys.version.split(" ")[0]
         ctx["bootswatch_version"] = self._get_staticfile_version("bootswatch")
         ctx["fontawesome_version"] = self._get_staticfile_version("font-awesome")
+        ctx["ingredients"] = (RecipeTable.objects.values("ingredient__name", "ingredient__slug")
+                              .annotate(count=Count("ingredient__name"))
+                              .order_by("-count", "ingredient__name"))
         return ctx
 
 
@@ -53,6 +56,15 @@ class RecipeTypeView(ListView):
         return self.model.objects \
             .filter(is_visible=True) \
             .filter(recipe_class__slug=self.kwargs.get("slug")).order_by(Lower("name"))
+
+
+class RecipeIngredientView(ListView):
+    model = Recipe
+
+    def get_queryset(self):
+        return self.model.objects \
+            .filter(is_visible=True) \
+            .filter(recipe_tables__ingredient__slug=self.kwargs.get("slug")).order_by(Lower("name"))
 
 
 class SearchView(ListView):

@@ -11,7 +11,7 @@ class IngredientInline(admin.TabularInline):
 
 @admin.register(Ingredient)
 class IngredientAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name')
+    list_display = ('id', 'name', 'slug')
     search_fields = ["name"]
 
 

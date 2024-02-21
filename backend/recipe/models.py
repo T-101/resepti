@@ -19,6 +19,7 @@ class Ingredient(models.Model):
         ordering = ["name"]
 
     name = models.CharField(max_length=40)
+    slug = AutoSlugField(populate_from="name")
 
     def __str__(self):
         return self.name.capitalize()
