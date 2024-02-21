@@ -10,10 +10,6 @@ RUN apk update \
     && apk add nano bash htop \
     && apk add zlib-dev jpeg-dev
 
-# to change this default, build using --build-arg timezone=Something/Else
-ARG timezone=Europe/Helsinki
-ENV TZ=${timezone}
-
 RUN pip install --upgrade pip
 COPY requirements.txt /app/
 RUN pip install -r requirements.txt
