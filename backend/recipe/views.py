@@ -34,9 +34,10 @@ class InfoView(TemplateView):
         ctx["python_version"] = sys.version.split(" ")[0]
         ctx["bootswatch_version"] = self._get_staticfile_version("bootswatch")
         ctx["fontawesome_version"] = self._get_staticfile_version("font-awesome")
-        ctx["ingredients"] = (RecipeTable.objects.values("ingredient__name", "ingredient__slug")
-                              .annotate(count=Count("ingredient__name"))
-                              .order_by("-count", "ingredient__name"))
+        ctx["ingredients"] = list(RecipeTable.objects
+                                  .values("ingredient__name", "ingredient__slug")
+                                  .annotate(count=Count("ingredient__name"))
+                                  .order_by("-count", "ingredient__name"))
         return ctx
 
 
