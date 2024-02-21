@@ -6,6 +6,7 @@
         <title>Resepti</title>
         <meta property="og:title" content="Resepti"/>
     {% endblock %}
+    <script src="{% static 'bs-color-mode-toggler.js' %}"></script>
     <meta property="og:description" content="Nälkäisenä tämäkin idea syntyi"/>
     <meta property="og:image" content="https://resepti.didnot.win/static/android-chrome-192x192.png"/>
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'apple-touch-icon.png' %}">
@@ -72,13 +73,10 @@
         </div>
     </div>
 </nav>
-<div class="container">
+<div class="container mb-4">
     {% block content %}
     {% endblock %}
 </div>
-<h1>&nbsp;</h1>
-
-<script src="{% static 'bs-color-mode-toggler.js' %}"></script>
 
 <script async src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js"
         integrity="sha512-i9cEfJwUwViEPFKdC1enz4ZRGBj8YQo6QByFTF92YXHi7waCqyexvRD75S5NVTsSiTv7rKWqG9Y5eFxmRsOn0A=="
