@@ -5,4 +5,4 @@ django_extensions==3.2.3
 django_simple_plausible==0.0.4
 gunicorn==21.2.0
 ipython==8.21.0
-Pillow==10.2.0
+Pillow==10.3.0
