@@ -33,7 +33,7 @@ class InfoView(TemplateView):
         ctx["django_version"] = '.'.join(map(str, list(DJANGO_VERSION[0:3])))
         ctx["python_version"] = sys.version.split(" ")[0]
         ctx["bootswatch_version"] = self._get_staticfile_version("bootswatch")
-        ctx["fontawesome_version"] = self._get_staticfile_version("font-awesome")
+        ctx["tablericons_version"] = self._get_staticfile_version("tabler-icons")
         ctx["ingredients"] = list(RecipeTable.objects
                                   .values("ingredient__name", "ingredient__slug")
                                   .annotate(count=Count("ingredient__name"))
