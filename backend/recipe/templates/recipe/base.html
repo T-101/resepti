@@ -15,26 +15,40 @@
     <link rel="manifest" href="{% static 'site.webmanifest' %}">
     <!-- Favicon from Freepik - https://www.flaticon.com/free-icons/spoon -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.2/litera/bootstrap.min.css"
-          integrity="sha512-FAKbqNc1K2O4cnjyyiTs7loU3hwtcTF5y59TnJMcPJK/fbzY8kJaMGak8/Nsg5VL9CLiUf7M06ct+mleM2UnwA=="
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.3/litera/bootstrap.min.css"
+          integrity="sha512-TUtnNUXMMWp2IALAR9t2z1vuorOUQL4dPWG3J9ANInEj6xu/rz5fzni/faoEGzuqeY1Z1yGD6COYAW72oiDVYA=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
-          integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
-          crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/3.21.0/tabler-icons-outline.css"
+          integrity="sha512-DFfFBVC0d1renXHVwDh08iti1ie8DYejn5SjJT1wKqTMp7TBIRaAxjSz4TETQlccfrmPlFKZ7ZR6J5pva5QOQA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <style>
+        .navmenu-icon {
+            width: 32px;
+        }
+
+        @media (max-width: 576px) {
+            .navbar-brand {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    </style>
 </head>
 <body>
 
 <nav class="navbar navbar-dark navbar-expand-sm bg-primary mb-3">
     <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler"
+                aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <a class="navbar-brand" href="{% url 'recipe:landing-page' %}">
             <img src="{% static 'favicon-32x32.png' %}" alt="Logo" width="24" height="24"
                  class="d-inline-block align-text-top me-1">
             Resepti
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler"
-                aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+
         <div class="collapse navbar-collapse" id="navbarToggler">
 
 
@@ -56,16 +70,19 @@
             <ul class="navbar-nav ms-2">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
-                       aria-haspopup="true" aria-expanded="false"><i class="fas fa-sun"></i></a>
+                       aria-haspopup="true" aria-expanded="false"><i class="ti ti-sun"></i></a>
                     <div class="dropdown-menu dropdown-menu-end">
-                        <button class="dropdown-item" data-bs-theme-value="light"><i class="fas fa-sun"></i>
+                        <button class="dropdown-item" data-bs-theme-value="light">
+                            <i class="ti ti-sun px-2 navmenu-icon text-center"></i>
                             Vaalea teema
                         </button>
-                        <button class="dropdown-item" data-bs-theme-value="dark"><i class="fas fa-moon"></i>
+                        <button class="dropdown-item" data-bs-theme-value="dark">
+                            <i class="ti ti-moon px-2 navmenu-icon text-center"></i>
                             Hämärä teema
                         </button>
-                        <button class="dropdown-item" data-bs-theme-value="auto"><i
-                                class="fas fa-magic"></i> Automaattinen
+                        <button class="dropdown-item" data-bs-theme-value="auto">
+                            <i class="ti ti-wand px-2 navmenu-icon text-center"></i>
+                            Automaattinen
                         </button>
                     </div>
                 </li>
@@ -78,8 +95,8 @@
     {% endblock %}
 </div>
 
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js"
-        integrity="sha512-i9cEfJwUwViEPFKdC1enz4ZRGBj8YQo6QByFTF92YXHi7waCqyexvRD75S5NVTsSiTv7rKWqG9Y5eFxmRsOn0A=="
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+        integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 {% plausible %}
