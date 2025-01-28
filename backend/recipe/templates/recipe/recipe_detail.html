@@ -3,6 +3,30 @@
 {% block title %}
     <title>{{ object }} | Resepti</title>
     <meta property="og:title" content="{{ object }} | Resepti"/>
+{% endblock %}
+
+{% block opengraph %}
+    <meta property="description" content="{{ object }}"/>
+    <meta property="og:description" content="{{ object.instructions | truncatechars:157 }}"/>
+    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ object.picture.url }}"/>
+
+
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="{{ request.get_host }}">
+    <meta property="twitter:url" content="{{ request.build_absolute_uri }}">
+    <meta name="twitter:title" content="{{ object }} | Resepti">
+    <meta name="twitter:description" content="{{ object.instructions | truncatechars:157 }}">
+    <meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{{ object.picture.url }}">
+
+    <!-- Meta Tags Generated via https://www.opengraph.xyz -->
+
+
 
 {% endblock %}
 
