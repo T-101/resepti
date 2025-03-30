@@ -8,7 +8,9 @@
 {% block opengraph %}
     <meta property="description" content="{{ object }}"/>
     <meta property="og:description" content="{{ object.instructions | truncatechars:157 }}"/>
-    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ object.picture.url }}"/>
+    {% if object.picture %}
+        <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ object.picture.url }}"/>
+    {% endif %}
 
 
 
@@ -22,11 +24,11 @@
     <meta property="twitter:url" content="{{ request.build_absolute_uri }}">
     <meta name="twitter:title" content="{{ object }} | Resepti">
     <meta name="twitter:description" content="{{ object.instructions | truncatechars:157 }}">
-    <meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{{ object.picture.url }}">
+    {% if object.picture %}
+        <meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{{ object.picture.url }}">
+    {% endif %}
 
     <!-- Meta Tags Generated via https://www.opengraph.xyz -->
-
-
 
 {% endblock %}
 
@@ -46,37 +48,36 @@
 
     <div class="row">
         <div class="col-sm-6">
-
             {% if object.picture %}
                 <img src="{{ object.picture.url }}" class="img-fluid mb-2" alt="{{ object.name }}">
             {% endif %}
             {{ object.instructions | linebreaks }}
         </div>
         <div class="col-sm-6">
-
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">Määrä</th>
-                    <th scope="col">Aines</th>
-                </tr>
-                </thead>
-                <tbody>
-
-                {% for item in object.recipe_tables.all %}
-
+            {% if object.recipe_tables.count %}
+                <table class="table">
+                    <thead>
                     <tr>
-                        <th scope="row">{{ item.ingredient_amount.normalize | default_if_none:"" }}
-                            {{ item.ingredient_unit.unit | default_if_none:"" }}</th>
-                        <td>{{ item.ingredient }}</td>
+                        <th scope="col">Määrä</th>
+                        <th scope="col">Aines</th>
                     </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for item in object.recipe_tables.all %}
+
+                        <tr>
+                            <th scope="row">{{ item.ingredient_amount.normalize | default_if_none:"" }}
+                                {{ item.ingredient_unit.unit | default_if_none:"" }}</th>
+                            <td>{{ item.ingredient }}</td>
+                        </tr>
 
 
-                {% endfor %}
+                    {% endfor %}
 
-                </tbody>
-            </table>
-
+                    </tbody>
+                </table>
+            {% endif %}
         </div>
 
     </div>
