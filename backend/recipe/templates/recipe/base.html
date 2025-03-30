@@ -1,4 +1,4 @@
-<!DOCTYPE html>{% load static %}{% load plausible %}
+<!DOCTYPE html>{% load static plausible %}
 <html lang="fi" data-bs-theme="light">
 <head>
     <meta charset="UTF-8">
@@ -26,6 +26,28 @@
           integrity="sha512-DFfFBVC0d1renXHVwDh08iti1ie8DYejn5SjJT1wKqTMp7TBIRaAxjSz4TETQlccfrmPlFKZ7ZR6J5pva5QOQA=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <style>
+        @font-face {
+            font-display: swap;
+            font-family: 'Shadows Into Light Two';
+            font-style: normal;
+            font-weight: 400;
+            src: url('{% static "fonts/shadows-into-light-two-v17-latin-regular.woff2" %}') format('woff2');
+        }
+
+        body, p {
+            font-family: "Shadows Into Light Two", cursive;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        p {
+            font-size: 1.2em !important;
+        }
+
+        table {
+            font-size: 1.1em !important;
+        }
+
         .navmenu-icon {
             width: 32px;
         }
